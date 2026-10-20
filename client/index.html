@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Prática CORS</title>
+</head>
+<body>
+  <h2>Painel do Cliente</h2>
+  <p>Origem: <strong id="origem"></strong></p>
+  <button id="btn">Executar Requisição</button>
+  <pre id="saida">Aguardando...</pre>
+
+  <script>
+    document.getElementById('origem').innerText =
+      window.location.origin;
+
+    const API_URL = 'COLOQUE_A_URL_DA_API/dados';
+
+    document.getElementById('btn').addEventListener('click', () => {
+      const saida = document.getElementById('saida');
+
+      fetch(API_URL)
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          saida.innerText = JSON.stringify(data, null, 2);
+        })
+        .catch(err => {
+          saida.innerText = 'Falha: ' + err.message;
+        });
+    });
+  </script>
+</body>
+</html>
