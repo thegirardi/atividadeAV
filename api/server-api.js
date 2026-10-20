@@ -6,7 +6,7 @@ http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/dados') {
     res.writeHead(200, {
       'Content-Type': 'application/json; charset=utf-8',
-      'Access-Control-Allow-Origin': 'COLOQUE_A_URL_DO_CLIENTE'
+      'Access-Control-Allow-Origin': 'https://organic-potato-wvgrg5r55p54fvvg4-3000.app.github.dev'
     });
 
     res.end(JSON.stringify({
