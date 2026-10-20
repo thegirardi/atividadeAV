@@ -15,12 +15,17 @@
     document.getElementById('origem').innerText =
       window.location.origin;
 
-    const API_URL = 'https://organic-potato-wvgrg5r55p54fvvg4-8080.app.github.dev/';
+    const API_URL = 'https://organic-potato-wvgrg5r55p54fvvg4-8080.app.github.dev';
 
     document.getElementById('btn').addEventListener('click', () => {
       const saida = document.getElementById('saida');
 
-      fetch(API_URL)
+      fetch(API_URL, {
+  method: 'GET',
+  headers: {
+    'X-Identificador-Estudante': 'SEU_RA'
+  }
+})
         .then(res => {
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           return res.json();
